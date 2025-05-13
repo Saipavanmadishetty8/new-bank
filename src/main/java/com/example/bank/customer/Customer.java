@@ -13,6 +13,7 @@ public class Customer {
 
     private String name;
     private String email;
+    private double balance;
 
     // Constructors
     public Customer() {}
@@ -42,4 +43,13 @@ public class Customer {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public double getBalance(){
+        return balance;
+    }
+
+    public void setBalance(double balance){
+        this.balance=balance;
+    }
+
 }
