@@ -2,7 +2,7 @@ package com.example.bank.accounts;
 
 public class SavingsAccount extends BankAccount {
 
-    public SavingsAccount(int customerId, double balance) {
+    public SavingsAccount(long customerId, double balance) {
         super(customerId, balance);
     }
 

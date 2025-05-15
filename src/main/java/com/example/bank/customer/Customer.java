@@ -1,9 +1,7 @@
 package com.example.bank.customer;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
+import com.example.bank.accounts.AccountType;
+import jakarta.persistence.*;
 
 @Entity
 public class Customer {
@@ -14,6 +12,10 @@ public class Customer {
     private String name;
     private String email;
     private double balance;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "account_type")
+    private AccountType accountType;
+
 
     // Constructors
     public Customer() {}
@@ -50,6 +52,14 @@ public class Customer {
 
     public void setBalance(double balance){
         this.balance=balance;
+    }
+
+    public void setAccountType(AccountType accountType){
+        this.accountType = accountType;
+    }
+
+    public AccountType getAccountType(){
+        return accountType;
     }
 
 }

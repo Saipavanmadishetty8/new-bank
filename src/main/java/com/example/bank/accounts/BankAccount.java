@@ -1,10 +1,10 @@
 package com.example.bank.accounts;
 
 public abstract class BankAccount {
-    protected int customerId;
+    protected long customerId;
     protected double balance;
 
-    public BankAccount(int customerId, double balance) {
+    public BankAccount(long customerId, double balance) {
         this.customerId = customerId;
         this.balance = balance;
     }
@@ -17,7 +17,11 @@ public abstract class BankAccount {
         return balance;
     }
 
-    public int getCustomerId() {
+    public void setBalance(double balance){
+        this.balance = balance;
+    }
+
+    public long getCustomerId() {
         return customerId;
     }
 }

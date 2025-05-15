@@ -1,5 +1,8 @@
 package com.example.bank.Service;
 
+import com.example.bank.accounts.AccountType;
+import com.example.bank.accounts.*;
+import com.example.bank.accounts.CurrentAccount;
 import com.example.bank.customer.Customer;
 import com.example.bank.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +22,11 @@ public class CustomerService {
 
     public void withdrawAmount(long customerID, double amount){
         Customer customer = customerRepository.findById(customerID).orElseThrow(() -> new RuntimeException("Customer Not Found"));
+        BankAccount account = getAccountHandler(customer);
+
         if(customer.getBalance()>=amount){
-            customer.setBalance(customer.getBalance()-amount);
+            account.withdraw(amount);
+            customer.setBalance(account.getBalance());
             customerRepository.save(customer);
         }
         else{
@@ -41,4 +47,17 @@ public class CustomerService {
             throw new RuntimeException("Insufficient balance");
         }
     }
+    public BankAccount getAccountHandler(Customer customer) {
+        BankAccount account;
+        if (customer.getAccountType() == AccountType.SAVINGS) {
+            account = new SavingsAccount(customer.getId(),customer.getBalance());
+        } else {
+            account = new CurrentAccount(customer.getId(),customer.getBalance());
+        }
+
+        account.setBalance(customer.getBalance()); // load existing balance
+
+        return account;
+    }
+
 }
