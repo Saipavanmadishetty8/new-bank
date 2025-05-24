@@ -10,6 +10,7 @@ public class Customer {
     private Long id;
 
     private String name;
+    @Column(unique = true)
     private String email;
     private double balance;
     @Enumerated(EnumType.STRING)
