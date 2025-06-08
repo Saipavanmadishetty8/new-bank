@@ -18,19 +18,21 @@ public class Customer {
     private AccountType accountType;
 
 
-    // Constructors
+    // Constructors parameterless
     public Customer() {}
 
+    // Constructor with parameters name, email
     public Customer(String name, String email) {
         this.name = name;
         this.email = email;
     }
 
-    // Getters and Setters
+    // Getters for id
     public Long getId() {
         return id;
     }
 
+    // Getters and Setters for name
     public String getName() {
         return name;
     }
@@ -39,6 +41,7 @@ public class Customer {
         this.name = name;
     }
 
+    // Getters and Setters for email
     public String getEmail() {
         return email;
     }
@@ -47,6 +50,7 @@ public class Customer {
         this.email = email;
     }
 
+    // Getters and Setters for balance
     public double getBalance(){
         return balance;
     }
@@ -55,6 +59,7 @@ public class Customer {
         this.balance=balance;
     }
 
+    // Getters and Setters for account type
     public void setAccountType(AccountType accountType){
         this.accountType = accountType;
     }
